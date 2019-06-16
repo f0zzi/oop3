@@ -51,7 +51,7 @@ public:
 	Fraction operator++(int)
 	{
 		Fraction tmp(*this);
-		++*this;
+		++(*this);
 		return tmp;
 	}
 
@@ -72,4 +72,16 @@ public:
 		return this->numerator * other.denominator < this->denominator * other.numerator;
 	}
 	void Normalize();
+
+	friend Fraction operator-(int number, const Fraction& fraction);
+
+	int& operator[](const char* element);
 };
+
+Fraction& operator--(Fraction& fraction);
+
+Fraction operator--(Fraction& fraction, int);
+
+Fraction operator-(const Fraction& fraction, int number);
+
+Fraction operator-(int number, const Fraction& fraction);

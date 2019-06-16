@@ -58,3 +58,40 @@ void Fraction::Normalize()
 		denominator /= divider;
 	}
 }
+
+int& Fraction::operator[](const char* element)
+{
+	if (!strcmp("num", element))
+		return numerator;
+	else if (!strcmp("denom", element))
+		return denominator;
+	else
+	{
+		cout << "Error.";
+		exit(1);
+	}
+}
+
+Fraction& operator--(Fraction& fraction)
+{
+	fraction = fraction - Fraction(1, 1);
+	return fraction;
+}
+
+Fraction operator--(Fraction& fraction, int)
+{
+	Fraction tmp(fraction);
+	fraction = --fraction;
+	return tmp;
+}
+
+Fraction operator-(const Fraction& fraction, int number)
+{
+	return fraction - Fraction(number);
+}
+
+Fraction operator-(int number, const Fraction& fraction)
+{
+	Fraction tmp = Fraction(number) - fraction;
+	return tmp;
+}

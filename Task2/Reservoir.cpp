@@ -119,3 +119,30 @@ int Reservoir::GetBiggestFromArray(Reservoir** arr, ResType type)
 	}
 	return index;
 }
+
+Reservoir& Reservoir::operator++()
+{
+	width++;
+	length++;
+	depth++;
+	return *this;
+}
+
+Reservoir Reservoir::operator++(int)
+{
+	Reservoir tmp(*this);
+	++(*this);
+	return tmp;
+}
+
+Reservoir& operator+(Reservoir& res, int number)
+{
+	if (number > 0)
+	{
+		res.SetWidth(res.GetWidth() + number);
+		res.SetLength(res.GetLength() + number);
+		res.SetDepth(res.GetDepth() + number);
+	}
+	else
+		return res;
+}

@@ -15,8 +15,8 @@ private:
 public:
 	Reservoir() : Reservoir("No name", noType, 1, 1, 1) {};
 	Reservoir(const char* name, ResType type, int width, int length, int depth);
-	Reservoir(const Reservoir& other):
-	Reservoir(other.name, other.type, other.width, other.length, other.depth) {}
+	Reservoir(const Reservoir& other) :
+		Reservoir(other.name, other.type, other.width, other.length, other.depth) {}
 	~Reservoir();
 
 	void SetName(const char* name);
@@ -70,4 +70,10 @@ public:
 	static int GetBiggerAreaRes(const Reservoir& first, const Reservoir& second);
 
 	static int GetBiggestFromArray(Reservoir** arr, ResType type);
+
+	Reservoir& operator++();
+
+	Reservoir operator++(int);
 };
+
+Reservoir& operator+(Reservoir& res, int number);
